@@ -48,34 +48,67 @@ nhap:
             player++;
 
             if ((array1[1] == 'O' && array1[5] == 'O') && array1[9] == 'O')
-                Console.WriteLine("PLAYER 2 WINNNN!");
+            {
+               Console.WriteLine("PLAYER 2 WINNNN!");
+               goto end;
+            }
+            
+               
 
             else if ((array1[2] == 'O' && array1[5] == 'O') && array1[8] == 'O')
-                Console.WriteLine("PLAYER 2 WINNNN!");
+            {
+               Console.WriteLine("PLAYER 2 WINNNN!");
+               goto end;
+            }  
 
             else if ((array1[3] == 'O' && array1[5] == 'O') && array1[8] == 'O')
-                Console.WriteLine("PLAYER 2 WINNNN!");
-
+            {
+               Console.WriteLine("PLAYER 2 WINNNN!");
+               goto end;
+            }
             else if ((array1[4] == 'O' && array1[5] == 'O') && array1[6] == 'O')
-                Console.WriteLine("PLAYER 2 WINNNN!");
+            {
+               Console.WriteLine("PLAYER 2 WINNNN!");
+               goto end;
+            }
 
             else if ((array1[1] == 'X' && array1[5] == 'X') && array1[9] == 'X')
-                Console.WriteLine("PLAYER 1 WINNNN!");
+            {
+               Console.WriteLine("PLAYER 1 WINNNN!");
+               goto end;
+            }
 
             else if ((array1[2] == 'X' && array1[5] == 'X') && array1[8] == 'X')
-                Console.WriteLine("PLAYER 1 WINNNN!");
+            {
+               Console.WriteLine("PLAYER 1 WINNNN!");
+               goto end;
+            }
 
             else if ((array1[3] == 'X' && array1[5] == 'X') && array1[8] == 'X')
-                Console.WriteLine("PLAYER 1 WINNNN!");
+            {
+               Console.WriteLine("PLAYER 1 WINNNN!");
+               goto end;
+            }
 
             else if ((array1[4] == 'X' && array1[5] == 'X') && array1[6] == 'X')
-                Console.WriteLine("PLAYER 1 WINNNN!");
+            {
+               Console.WriteLine("PLAYER 1 WINNNN!");
+               goto end;
+            }
 
             else if (array1[1] == '-' || array1[2] == '-' || array1[3] == '-' || array1[4] == '-' || array1[5] == '-' || array1[6] == '-' || array1[7] == '-' || array1[8] == '-' || array1[9] == '-')
                 goto nhap;
 
             else
-                Console.WriteLine("YA DRAW!!!!");
+            {
+               Console.WriteLine("YA DRAW!!!!");
+               goto end;
+            }
+               
+            
+end:
+            
+            return 0;
         }
         private static char getplayerChar(char c)
         {
