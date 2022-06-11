@@ -34,9 +34,9 @@ namespace Tic_Tac_Toe
             int player = 1;
 nhap:
             if (player % 2 == 0)
-                Console.WriteLine("Player 2 turn");
+                Console.WriteLine("Player 2 turn (O)");
             else
-                Console.WriteLine("Player 1 turn");
+                Console.WriteLine("Player 1 turn (X)");
             
             Console.Write("Hello! plz enter ya number: ");
             int n = Convert.ToInt32(Console.ReadLine());
@@ -58,7 +58,29 @@ nhap:
                goto end;
             }
             
-               
+            else if ((array1[1] == 'O' && array1[2] == 'O') && array1[3] == 'O')
+            {
+               Console.WriteLine("PLAYER 2 WINNNN!");
+               goto end;
+            }     
+            
+            else if ((array1[7] == 'O' && array1[8] == 'O') && array1[9] == 'O')
+            {
+               Console.WriteLine("PLAYER 2 WINNNN!");
+               goto end;
+            }  
+            
+            else if ((array1[1] == 'O' && array1[4] == 'O') && array1[7] == 'O')
+            {
+               Console.WriteLine("PLAYER 2 WINNNN!");
+               goto end;
+            }  
+            
+            else if ((array1[3] == 'O' && array1[6] == 'O') && array1[9] == 'O')
+            {
+               Console.WriteLine("PLAYER 2 WINNNN!");
+               goto end;
+            }  
 
             else if ((array1[2] == 'O' && array1[5] == 'O') && array1[8] == 'O')
             {
@@ -82,6 +104,30 @@ nhap:
                Console.WriteLine("PLAYER 1 WINNNN!");
                goto end;
             }
+            
+            else if ((array1[1] == 'X' && array1[2] == 'X') && array1[3] == 'X')
+            {
+               Console.WriteLine("PLAYER 1 WINNNN!");
+               goto end;
+            }     
+            
+            else if ((array1[7] == 'X' && array1[8] == 'X') && array1[9] == 'X')
+            {
+               Console.WriteLine("PLAYER 1 WINNNN!");
+               goto end;
+            }  
+            
+            else if ((array1[1] == 'X' && array1[4] == 'X') && array1[7] == 'X')
+            {
+               Console.WriteLine("PLAYER 1 WINNNN!");
+               goto end;
+            }  
+            
+            else if ((array1[3] == 'X' && array1[6] == 'X') && array1[9] == 'X')
+            {
+               Console.WriteLine("PLAYER 1 WINNNN!");
+               goto end;
+            }  
 
             else if ((array1[2] == 'X' && array1[5] == 'X') && array1[8] == 'X')
             {
