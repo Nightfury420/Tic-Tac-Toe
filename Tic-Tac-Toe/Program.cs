@@ -33,6 +33,11 @@ namespace Tic_Tac_Toe
 
             int player = 1;
 nhap:
+            if (player % 2 == 0)
+                Console.WriteLine("Player 2 turn");
+            else
+                Console.WriteLine("Player 1 turn");
+            
             Console.Write("Hello! plz enter ya number: ");
             int n = Convert.ToInt32(Console.ReadLine());
 
