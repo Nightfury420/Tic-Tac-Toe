@@ -19,11 +19,18 @@ namespace Tic_Tac_Toe
         static int pos;
         static void Main(string[] args)
         {
-            Console.WriteLine("Tic Tac Toe Ver 0.0");
+            do 
+            {
+                Console.WriteLine("Tic Tac Toe Ver 0.0");
 
-            Console.WriteLine("Player1({0}) vs Player2({1})", playerChar1, playerChar2);
+                Console.WriteLine("Player1({0}) vs Player2({1})", playerChar1, playerChar2);
 
-            Board();
+                Board();
+                
+                Console.WriteLine("PLayer{0} turn", getChar());
+                
+                pos = Console.ReadLine();
+            }while {};
             
             
             
@@ -161,6 +168,13 @@ end:
             
             return 0;
         }
+        
+        private static char getChar()
+        {
+           return player % 2 == 0 ? playerChar1 : playerChar2;
+        }
+        
+        
         private static char getplayerChar(char c)
         {
             if (c == '-')
