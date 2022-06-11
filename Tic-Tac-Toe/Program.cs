@@ -29,8 +29,10 @@ namespace Tic_Tac_Toe
                 
                 Console.WriteLine("PLayer{0} turn", getChar());
                 
-                pos = Console.ReadLine();
-            }while {};
+                pos = Convert.ToInt32(Console.ReadLine());
+                
+                checkPosition();
+            }while (true);
             
             
             
@@ -166,7 +168,7 @@ nhap:
             
 end:
             
-            return 0;
+            return ;
         }
         
         private static char getChar()
