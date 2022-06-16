@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -44,7 +44,7 @@ namespace Tic_Tac_Toe
 start:
             Console.Clear();
 
-            Console.WriteLine("Tic Tac Toe Ver 0.0");
+            Console.WriteLine("Tic Tac Toe Ver 1.0");
 
             Console.WriteLine("1. 3x3");
 
@@ -81,15 +81,22 @@ start:
 
                 Console.WriteLine("Tic Tac Toe Ver 0.0");
 
-                Console.WriteLine("Player1({0}) vs Player2({1})", playerChar1, playerChar2);
+                Console.WriteLine("Player1({0}) vs CPU({1})", playerChar2, playerChar1);
 
                 Board();
 
-                Console.Write("PLayer {0} turn enter (0-8): ", getChar());
+                if (getChar() == playerChar2)
+                {
+                    Console.Write("PLayer {0} turn enter (0-8): ", getChar());
 
-                pos = Convert.ToInt32(Console.ReadLine());
+                    pos = Convert.ToInt32(Console.ReadLine());
 
-                checkPosition();
+                    checkPosition();
+                }
+                else if (getChar() == playerChar1)
+                {
+                    cpu();
+                }
 
                 int flag = checkWin();
 
@@ -99,7 +106,7 @@ start:
 
                     Console.WriteLine("Tic Tac Toe Ver 0.0");
 
-                    Console.WriteLine("Player1({0}) vs Player2({1})", playerChar1, playerChar2);
+                    Console.WriteLine("Player1({0}) vs CPU({1})", playerChar2, playerChar1);
 
                     Board();
 
@@ -123,7 +130,7 @@ start:
 
                     Console.WriteLine("Tic Tac Toe Ver 0.0");
 
-                    Console.WriteLine("Player1({0}) vs Player2({1})", playerChar1, playerChar2);
+                    Console.WriteLine("Player1({0}) vs CPU({1})", playerChar2, playerChar1);
 
                     Board();
 
@@ -143,6 +150,38 @@ start:
 
             } while (true);
 
+        }
+
+        private static void cpu()
+        {
+            int[] I = new int[30];
+
+            int[] J = new int[30];
+
+            int count = 0;
+
+            for (int i = 0; i < gameMode; i++)
+            {
+                for (int j = 0; j < gameMode; j++)
+                {
+                    if (board[i, j] == '-')
+                    {
+                        I[count] = i;
+
+                        J[count] = j;
+
+                        count++;
+                    }
+
+                }
+            }
+
+            Random randomat = new Random();
+            int randy = randomat.Next(count);
+
+            board[I[randy], J[randy]] = playerChar1;
+
+            player++; ;
         }
 
         private static char playerWin()
