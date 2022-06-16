@@ -41,7 +41,7 @@ namespace Tic_Tac_Toe
 
         static void Main(string[] args)
         {
-        start:
+start:
             Console.Clear();
 
             Console.WriteLine("Tic Tac Toe Ver 0.0");
