@@ -8,7 +8,13 @@ namespace Tic_Tac_Toe
 {
     class Program
     {
-        static char[] board = { '-', '-', '-', '-', '-', '-', '-', '-', '-', '-' };
+        static char[,] board = {
+            {'-', '-', '-' },
+            {'-', '-', '-' },
+            {'-', '-', '-' },
+        };
+
+        static int gameMode = 3;
 
         static int player = 1;
 
@@ -29,7 +35,7 @@ namespace Tic_Tac_Toe
 
                 Board();
                 
-                Console.Write("PLayer{0} turn", getChar());
+                Console.Write("PLayer {0} turn enter (0-8): ", getChar());
                 
                 pos = Convert.ToInt32(Console.ReadLine());
                 
@@ -83,41 +89,181 @@ namespace Tic_Tac_Toe
 
         private static void resetGame()
         {
-            for (int i = 1; i < 9; i++)
-                board[i] = '-';
+            for (int i = 0; i < 9; i++)
+                for (int j = 0; j < gameMode; j++)
+                    board[i,j] = '-';
 
             player = 1;
         }
         
         private static int checkWin()
         {
-            int i;
-            for ( i = 1; i <= 9; i++)
+            int c;
+            for ( c = 0; c < gameMode; c++)
             {
-                if (board[i] == '-')
-                    break;
-                
+                for  ( int j = 0; j < gameMode; j++)
+                    if (board[c,j] == '-')
+                        break;
             }
-            if (board[1] == board[2] && board[2] == board[3] && board[2] != '-')
-                return 1;
-            else if (board[4] == board[5] && board[5] == board[6] && board[4] != '-')
-                return 1;
-            else if (board[7] == board[8] && board[8] == board[9] && board[7] != '-')
-                return 1;
-            else if (board[1] == board[4] && board[4] == board[7] && board[4] != '-')
-                return 1;
-            else if (board[2] == board[5] && board[5] == board[8] && board[5] != '-')
-                return 1;
-            else if (board[3] == board[6] && board[6] == board[9] && board[6] != '-')
-                return 1;
-            else if (board[1] == board[5] && board[5] == board[9] && board[5] != '-')
-                return 1;
-            else if (board[3] == board[5] && board[5] == board[7] && board[5] != '-')
+
+            if (checkCrossesLeftToRight() == 1 || checkCrossesLeftToRight() == 2)
                 return 1;
 
-            if (i > 9)
+            if (checkCrossesRightToLeft() == 1 || checkCrossesRightToLeft() == 2)
+                return 1;
+
+            for (int i = 0; i < gameMode; i++)
+            {
+                for ( int j = 0; j < gameMode; j++)
+                {
+                    if (board[i,j] != '-')
+                    {
+                        if (j == 0)
+                        {
+                            int q = 0;
+                            int m = board[i, j];
+                            for (int k = j; k < gameMode; k++)
+                            {
+                                if (board[i, k] == m)
+                                    q++;
+                                if (q == gameMode)
+                                    return 1;
+                            }
+                        }
+                        else if (j >= 1 && j != gameMode - 1)
+                        {
+                            int q = 1;
+                            int m = board[i, j];
+                            for (int k = j + 1; k < gameMode; k++)
+                            {
+                                if (board[i, k] == m)
+                                    q++;
+                            }
+                            for (int k = j - 1; k != -1; k--)
+                            {
+                                if (board[i, k] == m)
+                                    q++;
+                            }
+                            if (q == gameMode)
+                                return 1;
+                        }
+                        else if (j == gameMode - 1)
+                        {
+                            int q = 0;
+                            int m = board[i, j];
+                            for (int k = gameMode - 1; k != -1; k--)
+                            {
+                                if (board[i, k] == m)
+                                    q++;
+                                if (q == gameMode)
+                                    return 1;
+                            }
+                        }
+                        if (checkDown(i,j) == 1)
+                            return 1;
+                    }
+                }
+            }
+
+            if (c > 9)
                 return -1;
 
+            return 0;
+        }
+
+        private static int checkCrossesLeftToRight()
+        {
+            int j = 0;
+            int x = 0;
+            int o = 0;
+
+            for (int i = 0; i < gameMode; i++)
+            {
+                if (board[i, j] == playerChar1)
+                    x++;
+                else if (board[i, j] == playerChar2)
+                    o++;
+                j++;
+            }
+
+            if (x == gameMode)
+                return 1;
+            else if (o == gameMode)
+                return 2;
+
+            return 0;
+
+        }
+
+        private static int checkCrossesRightToLeft()
+        {
+            int j = gameMode - 1;
+            int x = 0;
+            int o = 0;
+
+            for (int i = 0; i < gameMode; i++)
+            {
+                if (board[i, j] == playerChar1)
+                    x++;
+                else if (board[i, j] == playerChar2)
+                    o++;
+                j--;
+            }
+
+            if (x == gameMode)
+                return 1;
+            else if (o == gameMode)
+                return 2;
+
+
+            return 0;
+        }
+
+        private static int checkDown(int i, int j)
+        {
+            if (i == 0)
+            {
+                int q = 0;
+                int m = board[i, j];
+                for (int k = 0; k < gameMode; k++)
+                {
+                    if (board[k, j] == m)
+                        q++;
+                    if (q == gameMode)
+                        return 1;
+                }
+            }
+            else if (i >= 1 && i != gameMode - 1)
+            {
+                int q = 1;
+                int m = board[i, j];
+                for (int k = i + 1; k < gameMode; k++)
+                {
+                    if (board[k, j] == m)
+                        q++;
+                }
+                for (int k = i - 1; k != -1; k--)
+                {
+                    if (board[k, j] == m)
+                        q++;
+                }
+                if (q == gameMode)
+                    return 1;
+            }
+            else if (i == gameMode - 1)
+            {
+                int q = 0;
+                int m = board[i, j];
+                for (int k = i; k != -1; k--)
+                {
+                    if (board[k, j] == m)
+                        q++;
+                    if (q == gameMode)
+                        return 1;
+                }
+
+            }
+           
             return 0;
         }
 
@@ -128,7 +274,33 @@ namespace Tic_Tac_Toe
         
         private static void checkPosition()
         {
-            char c = board[pos];
+            int t = 0;
+            int m = 0;
+            int s = 0;
+            for (int i = 0; i < gameMode; i++)
+            {
+                for (int j = 0; j < gameMode; j++)
+                {
+                    if (i * gameMode + j == pos)
+                    {
+                        m = i;
+                        s = j;
+                        t++;
+                    }
+                }
+            }
+
+            if (t == 0)
+            {
+                Console.WriteLine("So khong dung");
+
+                Thread.Sleep(1500);
+
+                return;
+            }
+                
+
+            char c = board[m,s];
             
             if (c == playerChar1 || c == playerChar2)
             {
@@ -139,7 +311,7 @@ namespace Tic_Tac_Toe
                 return;
             }
             
-            board[pos] = getChar();
+            board[m,s] = getChar();
             
             player++;
         
@@ -159,17 +331,31 @@ namespace Tic_Tac_Toe
         {
             //Console.WriteLine("     |     |     ");
 
-            Console.WriteLine("  {0}  |  {1}  |  {2}", getplayerChar(board[1]), getplayerChar(board[2]), getplayerChar(board[3]));
+            Console.Write("  {0}  |  {1}  |  {2}", getplayerChar(board[0,0]), getplayerChar(board[0,1]), getplayerChar(board[0,2]));
 
-            Console.WriteLine("-----+-----+-----");
+            Console.Write("\t\t    Ex:");
 
-            Console.WriteLine("  {0}  |  {1}  |  {2}", getplayerChar(board[4]), getplayerChar(board[5]), getplayerChar(board[6]));
+            Console.WriteLine("\t  0  |  1  |  2  ");
 
-            Console.WriteLine("-----+-----+-----");
+            Console.Write("-----+-----+-----");
 
-            Console.WriteLine("  {0}  |  {1}  |  {2}", getplayerChar(board[7]), getplayerChar(board[8]), getplayerChar(board[9]));
+            Console.WriteLine("\t\t-----+-----+-----");
 
-            Console.WriteLine("-----+-----+-----");
+            Console.Write("  {0}  |  {1}  |  {2}", getplayerChar(board[1,0]), getplayerChar(board[1,1]), getplayerChar(board[1,2]));
+
+            Console.WriteLine("\t\t\t  3  |  4  |  5  ");
+
+            Console.Write("-----+-----+-----");
+
+            Console.WriteLine("\t\t-----+-----+-----");
+
+            Console.Write("  {0}  |  {1}  |  {2}", getplayerChar(board[2,0]), getplayerChar(board[2,1]), getplayerChar(board[2,2]));
+
+            Console.WriteLine("\t\t\t  6  |  7  |  8   ");
+
+            Console.Write("-----+-----+-----");
+
+            Console.WriteLine("\t\t-----+-----+-----");
         }
     }
 }
