@@ -6,6 +6,21 @@ using System.Threading;
 
 namespace Tic_Tac_Toe
 {
+   /* class Board
+    {
+        private int n;
+
+        public Board() { n = 3; }
+
+        public int N
+        {
+            get { return n; }
+            set { n = value; }
+        }
+
+    }*/
+
+
     class Program
     {
         static char[] board = { '-', '-', '-', '-', '-', '-', '-', '-', '-', '-' };
@@ -19,7 +34,12 @@ namespace Tic_Tac_Toe
         static int pos;
         static void Main(string[] args)
         {
-            do 
+
+          /*  Board b = new Board();
+            b.N = -454;
+            Console.WriteLine(b.N);*/
+
+            do
             {
                 Console.Clear();
 
@@ -27,12 +47,12 @@ namespace Tic_Tac_Toe
 
                 Console.WriteLine("Player1({0}) vs Player2({1})", playerChar1, playerChar2);
 
-                Board();
-                
+                Board();  
+
                 Console.Write("PLayer{0} turn", getChar());
-                
+
                 pos = Convert.ToInt32(Console.ReadLine());
-                
+
                 checkPosition();
 
                 int flag = checkWin();
@@ -70,143 +90,143 @@ namespace Tic_Tac_Toe
                     resetGame();
                 }
 
-            }while (true);
-            
-            
-            
+            } while (true);
+
+
+
             //MINE
 
             //int[,] m1 = new int[3,3];
 
-//             int player = 1;
-// nhap:
-//             if (player % 2 == 0)
-//                 Console.WriteLine("Player 2 turn (O)");
-//             else
-//                 Console.WriteLine("Player 1 turn (X)");
-            
-//             Console.Write("Hello! plz enter ya number: ");
-//             int n = Convert.ToInt32(Console.ReadLine());
+            //             int player = 1;
+            // nhap:
+            //             if (player % 2 == 0)
+            //                 Console.WriteLine("Player 2 turn (O)");
+            //             else
+            //                 Console.WriteLine("Player 1 turn (X)");
 
-//             char[] array1 = new char[] { '-', '-', '-', '-', '-', '-', '-', '-', '-', '-'}; ;
+            //             Console.Write("Hello! plz enter ya number: ");
+            //             int n = Convert.ToInt32(Console.ReadLine());
 
-//             if (player % 2 == 0)
-//                 array1[n] = 'O';
-//             else
-//                 array1[n] = 'X';
+            //             char[] array1 = new char[] { '-', '-', '-', '-', '-', '-', '-', '-', '-', '-'}; ;
 
-//             Console.WriteLine(array1[n]);
+            //             if (player % 2 == 0)
+            //                 array1[n] = 'O';
+            //             else
+            //                 array1[n] = 'X';
 
-//             player++;
+            //             Console.WriteLine(array1[n]);
 
-//             if ((array1[1] == 'O' && array1[5] == 'O') && array1[9] == 'O')
-//             {
-//                Console.WriteLine("PLAYER 2 WINNNN!");
-//                goto end;
-//             }
-            
-//             else if ((array1[1] == 'O' && array1[2] == 'O') && array1[3] == 'O')
-//             {
-//                Console.WriteLine("PLAYER 2 WINNNN!");
-//                goto end;
-//             }     
-            
-//             else if ((array1[7] == 'O' && array1[8] == 'O') && array1[9] == 'O')
-//             {
-//                Console.WriteLine("PLAYER 2 WINNNN!");
-//                goto end;
-//             }  
-            
-//             else if ((array1[1] == 'O' && array1[4] == 'O') && array1[7] == 'O')
-//             {
-//                Console.WriteLine("PLAYER 2 WINNNN!");
-//                goto end;
-//             }  
-            
-//             else if ((array1[3] == 'O' && array1[6] == 'O') && array1[9] == 'O')
-//             {
-//                Console.WriteLine("PLAYER 2 WINNNN!");
-//                goto end;
-//             }  
+            //             player++;
 
-//             else if ((array1[2] == 'O' && array1[5] == 'O') && array1[8] == 'O')
-//             {
-//                Console.WriteLine("PLAYER 2 WINNNN!");
-//                goto end;
-//             }  
+            //             if ((array1[1] == 'O' && array1[5] == 'O') && array1[9] == 'O')
+            //             {
+            //                Console.WriteLine("PLAYER 2 WINNNN!");
+            //                goto end;
+            //             }
 
-//             else if ((array1[3] == 'O' && array1[5] == 'O') && array1[8] == 'O')
-//             {
-//                Console.WriteLine("PLAYER 2 WINNNN!");
-//                goto end;
-//             }
-//             else if ((array1[4] == 'O' && array1[5] == 'O') && array1[6] == 'O')
-//             {
-//                Console.WriteLine("PLAYER 2 WINNNN!");
-//                goto end;
-//             }
+            //             else if ((array1[1] == 'O' && array1[2] == 'O') && array1[3] == 'O')
+            //             {
+            //                Console.WriteLine("PLAYER 2 WINNNN!");
+            //                goto end;
+            //             }     
 
-//             else if ((array1[1] == 'X' && array1[5] == 'X') && array1[9] == 'X')
-//             {
-//                Console.WriteLine("PLAYER 1 WINNNN!");
-//                goto end;
-//             }
-            
-//             else if ((array1[1] == 'X' && array1[2] == 'X') && array1[3] == 'X')
-//             {
-//                Console.WriteLine("PLAYER 1 WINNNN!");
-//                goto end;
-//             }     
-            
-//             else if ((array1[7] == 'X' && array1[8] == 'X') && array1[9] == 'X')
-//             {
-//                Console.WriteLine("PLAYER 1 WINNNN!");
-//                goto end;
-//             }  
-            
-//             else if ((array1[1] == 'X' && array1[4] == 'X') && array1[7] == 'X')
-//             {
-//                Console.WriteLine("PLAYER 1 WINNNN!");
-//                goto end;
-//             }  
-            
-//             else if ((array1[3] == 'X' && array1[6] == 'X') && array1[9] == 'X')
-//             {
-//                Console.WriteLine("PLAYER 1 WINNNN!");
-//                goto end;
-//             }  
+            //             else if ((array1[7] == 'O' && array1[8] == 'O') && array1[9] == 'O')
+            //             {
+            //                Console.WriteLine("PLAYER 2 WINNNN!");
+            //                goto end;
+            //             }  
 
-//             else if ((array1[2] == 'X' && array1[5] == 'X') && array1[8] == 'X')
-//             {
-//                Console.WriteLine("PLAYER 1 WINNNN!");
-//                goto end;
-//             }
+            //             else if ((array1[1] == 'O' && array1[4] == 'O') && array1[7] == 'O')
+            //             {
+            //                Console.WriteLine("PLAYER 2 WINNNN!");
+            //                goto end;
+            //             }  
 
-//             else if ((array1[3] == 'X' && array1[5] == 'X') && array1[8] == 'X')
-//             {
-//                Console.WriteLine("PLAYER 1 WINNNN!");
-//                goto end;
-//             }
+            //             else if ((array1[3] == 'O' && array1[6] == 'O') && array1[9] == 'O')
+            //             {
+            //                Console.WriteLine("PLAYER 2 WINNNN!");
+            //                goto end;
+            //             }  
 
-//             else if ((array1[4] == 'X' && array1[5] == 'X') && array1[6] == 'X')
-//             {
-//                Console.WriteLine("PLAYER 1 WINNNN!");
-//                goto end;
-//             }
+            //             else if ((array1[2] == 'O' && array1[5] == 'O') && array1[8] == 'O')
+            //             {
+            //                Console.WriteLine("PLAYER 2 WINNNN!");
+            //                goto end;
+            //             }  
 
-//             else if (array1[1] == '-' || array1[2] == '-' || array1[3] == '-' || array1[4] == '-' || array1[5] == '-' || array1[6] == '-' || array1[7] == '-' || array1[8] == '-' || array1[9] == '-')
-//                 goto nhap;
+            //             else if ((array1[3] == 'O' && array1[5] == 'O') && array1[8] == 'O')
+            //             {
+            //                Console.WriteLine("PLAYER 2 WINNNN!");
+            //                goto end;
+            //             }
+            //             else if ((array1[4] == 'O' && array1[5] == 'O') && array1[6] == 'O')
+            //             {
+            //                Console.WriteLine("PLAYER 2 WINNNN!");
+            //                goto end;
+            //             }
 
-//             else
-//             {
-//                Console.WriteLine("YA DRAW!!!!");
-//                goto end;
-//             }
-               
-            
-// end:
-            
-//             return ;
+            //             else if ((array1[1] == 'X' && array1[5] == 'X') && array1[9] == 'X')
+            //             {
+            //                Console.WriteLine("PLAYER 1 WINNNN!");
+            //                goto end;
+            //             }
+
+            //             else if ((array1[1] == 'X' && array1[2] == 'X') && array1[3] == 'X')
+            //             {
+            //                Console.WriteLine("PLAYER 1 WINNNN!");
+            //                goto end;
+            //             }     
+
+            //             else if ((array1[7] == 'X' && array1[8] == 'X') && array1[9] == 'X')
+            //             {
+            //                Console.WriteLine("PLAYER 1 WINNNN!");
+            //                goto end;
+            //             }  
+
+            //             else if ((array1[1] == 'X' && array1[4] == 'X') && array1[7] == 'X')
+            //             {
+            //                Console.WriteLine("PLAYER 1 WINNNN!");
+            //                goto end;
+            //             }  
+
+            //             else if ((array1[3] == 'X' && array1[6] == 'X') && array1[9] == 'X')
+            //             {
+            //                Console.WriteLine("PLAYER 1 WINNNN!");
+            //                goto end;
+            //             }  
+
+            //             else if ((array1[2] == 'X' && array1[5] == 'X') && array1[8] == 'X')
+            //             {
+            //                Console.WriteLine("PLAYER 1 WINNNN!");
+            //                goto end;
+            //             }
+
+            //             else if ((array1[3] == 'X' && array1[5] == 'X') && array1[8] == 'X')
+            //             {
+            //                Console.WriteLine("PLAYER 1 WINNNN!");
+            //                goto end;
+            //             }
+
+            //             else if ((array1[4] == 'X' && array1[5] == 'X') && array1[6] == 'X')
+            //             {
+            //                Console.WriteLine("PLAYER 1 WINNNN!");
+            //                goto end;
+            //             }
+
+            //             else if (array1[1] == '-' || array1[2] == '-' || array1[3] == '-' || array1[4] == '-' || array1[5] == '-' || array1[6] == '-' || array1[7] == '-' || array1[8] == '-' || array1[9] == '-')
+            //                 goto nhap;
+
+            //             else
+            //             {
+            //                Console.WriteLine("YA DRAW!!!!");
+            //                goto end;
+            //             }
+
+
+            // end:
+
+            //             return ;
         }
 
         private static char playerWin()
