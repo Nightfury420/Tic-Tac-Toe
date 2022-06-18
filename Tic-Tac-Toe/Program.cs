@@ -163,12 +163,17 @@ start:
 
         private static int checkWin()
         {
-            int c;
-            for (c = 0; c < gameMode; c++)
+            int c = 0;
+            for (int i = 0; i < gameMode; i++)
             {
                 for (int j = 0; j < gameMode; j++)
-                    if (board[c, j] == '-')
+                {
+                    if (board[i, j] == '-')
                         break;
+
+                    c++;
+                }
+                   
             }
 
             if (checkCrossesLeftToRight() == 1 || checkCrossesLeftToRight() == 2)
@@ -230,7 +235,7 @@ start:
                 }
             }
 
-            if (c > 9)
+            if (c >= gameMode * gameMode)
                 return -1;
 
             return 0;
