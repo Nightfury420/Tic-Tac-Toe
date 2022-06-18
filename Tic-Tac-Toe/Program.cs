@@ -124,7 +124,7 @@ start:
                         break;
 
                 }
-                else if (flag == -1)
+                else if (flag == -1 || draw == 1)
                 {
                     Console.Clear();
 
@@ -152,8 +152,12 @@ start:
 
         }
 
+        static int draw = 0;
+
         private static void cpu()
         {
+            draw = 0;
+
             int[] I = new int[30];
 
             int[] J = new int[30];
@@ -175,6 +179,14 @@ start:
 
                 }
             }
+
+            if (count == 0)
+            {
+                draw = 1;
+
+                return;
+            }
+               
 
             Random randomat = new Random();
             int randy = randomat.Next(count);
@@ -202,12 +214,19 @@ start:
 
         private static int checkWin()
         {
-            int c;
-            for (c = 0; c < gameMode; c++)
+            int c = 0;
+            for (int i = 0; i < gameMode; i++)
             {
                 for (int j = 0; j < gameMode; j++)
-                    if (board[c, j] == '-')
+                {
+                    if (board[i, j] == '-')
+                    {
                         break;
+                    }
+
+                    c++;
+                }
+                    
             }
 
             if (checkCrossesLeftToRight() == 1 || checkCrossesLeftToRight() == 2)
@@ -269,7 +288,7 @@ start:
                 }
             }
 
-            if (c > 9)
+            if (c > gameMode * gameMode)
                 return -1;
 
             return 0;
